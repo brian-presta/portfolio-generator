@@ -6,10 +6,23 @@ var inquirer = require("inquirer")
 
 // console.log(generatePage(name,github))
 // fs.writeFile('index.html',generatePage(name,github),function(){return 'oops'})
-inquirer
-    .prompt([{
-        type: 'input',
-        name: 'name',
-        message: 'What is your name?'
-    }])
-    .then(answers => console.log(answers))
+var promptUser = function() {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is your name?'
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Enter your GitHub Username'   
+        },
+        {
+            type: 'input',
+            name: 'about',
+            message: 'Provide some information about yourself'   
+        }
+    ])    
+};
+promptUser().then(answers => console.log(answers))
