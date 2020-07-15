@@ -176,5 +176,5 @@ var dummy = {
     }
   ]
 };
-// generatePage(dummy)
+// console.log(generatePage(dummy))
 fs.writeFile('index.html',generatePage(dummy),function(){return 'oops'})
