@@ -1,11 +1,6 @@
-// var fs = require('fs')
+var fs = require('fs')
 var inquirer = require("inquirer")
-// var generatePage = require('./src/page-template.js')
-// const profileDataArgs = process.argv.slice(2, process.argv.length);
-// var [name,github] = profileDataArgs;
-
-// console.log(generatePage(name,github))
-// fs.writeFile('index.html',generatePage(name,github),function(){return 'oops'})
+var generatePage = require('./src/page-template.js')
 var promptUser = function() {
     return inquirer.prompt([
         {
@@ -134,5 +129,5 @@ var promptProject = function(portfolioData) {
 promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    console.log(portfolioData);
+    fs.writeFile('index.html',generatePage(portfolioData),function(){return 'oops'})
   });
