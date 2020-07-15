@@ -176,4 +176,5 @@ var dummy = {
     }
   ]
 };
-generatePage(dummy)
+// generatePage(dummy)
+fs.writeFile('index.html',generatePage(dummy),function(){return 'oops'})
