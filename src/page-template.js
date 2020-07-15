@@ -1,5 +1,6 @@
 module.exports = templateData => {
-    console.log(templateData)
+    // console.log(templateData)
+    var {projects, about, ...header} = templateData
     return `
     <!DOCTYPE html> 
     <html lang="en"> 
