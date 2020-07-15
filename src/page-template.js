@@ -63,7 +63,7 @@ generateProjects = projects => {
   })
   var nonFeaturedProjectHtmlArr = nonFeaturedProjects.map(({name,description,languages,link}) => {
     return `
-      <div class="col-12 mb-2 bg-dark text-light p-3 flex-column">
+      <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
         <h3 class="portfolio-item-title text-light">${name}</h3>
         <h5 class="portfolio-languages">
           Built With:
@@ -71,7 +71,7 @@ generateProjects = projects => {
         </h5>
         <p>${description}</p>
         <a href="${link}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-      </div>
+    </div>
     `
   })
   return `

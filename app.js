@@ -126,11 +126,24 @@ var promptProject = function(portfolioData) {
         }
     })
 };
-// promptUser()
-//   .then(promptProject)
-//   .then(portfolioData => {
-//     fs.writeFile('index.html',generatePage(portfolioData),function(){return 'oops'})
-//   });
+promptUser()
+  .then(promptProject)
+  .then(portfolioData => {
+    fs.writeFile('./dist/index.html',generatePage(portfolioData),function(err) {
+      if (err) {
+        console.log(err)
+        return
+      }
+      console.log('Page created!')
+      fs.copyFile('./src/style.css','./dist/style.css',err => {
+        if (err) {
+        console.log(err)
+        return
+        }
+        console.log('Style sheet copied!')
+      })
+    })
+  });
 var dummy = {
   name: 'Lernantino',
   github: 'lernantino',
@@ -177,4 +190,5 @@ var dummy = {
   ]
 };
 // console.log(generatePage(dummy))
-fs.writeFile('index.html',generatePage(dummy),function(){return 'oops'})
+// fs.copyFile('./src/style.css','./dist/style.css',err => console.log(err))
+// fs.writeFile('./dist/index.html',generatePage(dummy),function(){return 'oops'})
