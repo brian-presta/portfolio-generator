@@ -1,6 +1,6 @@
-var fs = require('fs')
 var inquirer = require("inquirer")
 var generatePage = require('./src/page-template.js')
+var {writeFile,copyFile}= require("./utils/generate-site.js")
 var promptUser = function() {
     return inquirer.prompt([
         {
@@ -128,22 +128,13 @@ var promptProject = function(portfolioData) {
 };
 promptUser()
   .then(promptProject)
-  .then(portfolioData => {
-    fs.writeFile('./dist/index.html',generatePage(portfolioData),function(err) {
-      if (err) {
-        console.log(err)
-        return
-      }
-      console.log('Page created!')
-      fs.copyFile('./src/style.css','./dist/style.css',err => {
-        if (err) {
-        console.log(err)
-        return
-        }
-        console.log('Style sheet copied!')
-      })
-    })
-  });
+  .then(portfolioData => generatePage(portfolioData))
+  .then(pageHTML => writeFile(pageHTML))
+  .then(writeFileResponse =>{
+    console.log(writeFileResponse)
+    copyFile()
+  })
+  .catch(err => console.log(err))
 var dummy = {
   name: 'Lernantino',
   github: 'lernantino',

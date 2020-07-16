@@ -29,3 +29,4 @@ const copyFile = function() {
         })
     })
 }
+module.exports = { writeFile, copyFile };
